@@ -1,14 +1,20 @@
 /**
  * 
  */
-(function(win){
-    
-    var PM_ORIGIN = '*';
-    
-    win.postMessage(JSON.stringify({
-        'message': 'noi_dung',
-        'call': function(){
-            console.log(arguments);
-        }
-    }), PM_ORIGIN)
-})(window.parent);
+try {
+	console.log('2) ', window.parent.cordova);
+} catch (e) {
+	console.log('Err: ', e.message);
+}
+
+/**
+ * 
+ */
+var PM_ORIGIN = '*';
+window.addEventListener('message', function(evt){
+    console.log('parent window: ', evt.source);
+    //console.log('cordova: ', evt.source.cordova);
+    evt.source.postMessage('Child post message', PM_ORIGIN);
+});
+	
+//window.parent.postMessage('Test message', PM_ORIGIN);

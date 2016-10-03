@@ -1,4 +1,35 @@
 /**
+ * 
+ * 
+ */
+(function(_win){
+	return;
+	//
+	//
+	_win.postMessageCB = _win.postMessageCB || function postMessageCB(message, origin, callback) {
+		// Has callback?
+		if ('function' == (typeof callback)) {
+			// +++ 
+			
+			// +++
+			//var timer = function 
+			// +++ Event handler
+			var onMessageCallback = function(evt) {
+				// 
+				
+				
+				// Self destruct
+				(_win.removeEventListener || _win.detachEvent)('message', onMessageCallback, false);
+			};
+			// +++ 
+			(_win.addEventListener || _win.attachEvent)('message', onMessageCallback, false);	
+		}
+		// 
+		return _win.postMessage(message, origin);
+	};
+})(window);
+
+/**
  *
  * 
  */
@@ -54,6 +85,9 @@
             // Delete temp function
             delete exeFunc[funcName];
         }
-    }
+    };
+    
+    
+    
     
 })(window);

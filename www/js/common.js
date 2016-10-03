@@ -7,14 +7,23 @@
 	//
 	//
 	_win.postMessageCB = _win.postMessageCB || function postMessageCB(message, origin, callback) {
-		// 
-		// +++ Event handler
-		var onMessageCallback = function(evt) {
+		// Has callback?
+		if ('function' == (typeof callback)) {
+			// +++ 
 			
-		};
-		// +++ 
-		(_win.addEventListener || _win.attachEvent)('message', onMessageCallback);
-		
+			// +++
+			//var timer = function 
+			// +++ Event handler
+			var onMessageCallback = function(evt) {
+				// 
+				
+				
+				// Self destruct
+				(_win.removeEventListener || _win.detachEvent)('message', onMessageCallback, false);
+			};
+			// +++ 
+			(_win.addEventListener || _win.attachEvent)('message', onMessageCallback, false);	
+		}
 		// 
 		return _win.postMessage(message, origin);
 	};

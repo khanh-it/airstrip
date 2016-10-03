@@ -43,7 +43,7 @@
                 <p class="event received">Device is Ready</p>
             </div>
         </div>
-        <!--<script type="text/javascript" src="js/common.js"></script>-->
+        <script type="text/javascript" src="js/xwf-call.js"></script>
         <script type="text/javascript" src="js/iframe.js"></script>
     </body>
 </html>

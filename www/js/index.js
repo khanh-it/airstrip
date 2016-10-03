@@ -3,6 +3,7 @@
  * 
  */
 (function(_win){
+	return;
 	//
 	//
 	//var postMessage = _win.postMessage;
@@ -13,7 +14,7 @@
 		return postMessage(message, origin);
 	};*/
 })(window);
-console.log('1) : ', window.postMessage);
+//console.log('1) : ', window.postMessage);
 
 /**
  * 
@@ -22,13 +23,6 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-        
-        /**
-         * 
-         */
-        window.addEventListener('message', function(evt){
-            console.log('evt: ', evt);
-        });
     },
     // Bind Event Listeners
     //
@@ -46,11 +40,6 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(evtId) {
-        // go full-screen
-        //var domMyiframe = document.getElementById('myiframe');
-        // +++ 
-        //document.requestFullscreen(domMyiframe);
-        
         // 
         console.log('Received Event: ' + evtId);
     }

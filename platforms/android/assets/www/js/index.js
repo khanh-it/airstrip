@@ -1,5 +1,23 @@
 /**
  * 
+ * 
+ */
+(function(_win){
+	return;
+	//
+	//
+	//var postMessage = _win.postMessage;
+	//
+	// 
+	_win.postMessage = undefined; /* function(message, origin, callback) {
+		alert('PM callback: ' + callback);
+		return postMessage(message, origin);
+	};*/
+})(window);
+//console.log('1) : ', window.postMessage);
+
+/**
+ * 
  */
 var app = {
     // Application Constructor
@@ -29,10 +47,13 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(evtId) {
-        // go full-screen
-        //var domMyiframe = document.getElementById('myiframe');
+        // Post message
+        var domMyiframe = document.getElementById('myiframe');
         // +++ 
-        //document.requestFullscreen(domMyiframe);
+        domMyiframe.addEventListener('load', function(evt){
+        	domMyiframe.contentWindow.postMessage('Parent post message', '*');
+        	console.log('Parent post message');	
+        }, false);
         // 
         console.log('Received Event: ' + evtId);
     }
@@ -45,7 +66,7 @@ if (!window.cordova) {
     // 
     window.cordova = {
         version: function(){
-            return '0.0.1'
+            return '0.0.1';
         }
     };
     //
