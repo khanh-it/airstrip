@@ -1,20 +1,36 @@
-/**
- * 
- */
-try {
-	console.log('2) ', window.parent.cordova);
-} catch (e) {
-	console.log('Err: ', e.message);
-}
-
-/**
- * 
- */
-var PM_ORIGIN = '*';
-window.addEventListener('message', function(evt){
-    console.log('parent window: ', evt.source);
-    //console.log('cordova: ', evt.source.cordova);
-    evt.source.postMessage('Child post message', PM_ORIGIN);
-});
+(function($){
 	
-//window.parent.postMessage('Test message', PM_ORIGIN);
+	$btnBgallery = $('#btn-bgallery');
+	
+	$btnBgallery.on('click', function(evt){
+		//
+		//
+		console.time('benchmark_XCalls');
+		xwfCall(
+			// Function call
+			// Context changed to parent page inside this function
+			function(_fcID){
+				//
+				navigator.camera.getPicture(
+					function(){
+						console.log('camera success');
+						xwfFBak(_fcID, arguments);
+					},
+					function(){
+						console.log('camera failed');
+						xwfFBak(_fcID, arguments);
+					}
+				);
+			},
+			// Callback 
+			function(result){
+				console.timeEnd('benchmark_XCalls');
+				console.log('get camera data: ', result);
+			},
+			// Params
+			[]
+		);
+		// .end
+	});
+	
+})(jQuery);

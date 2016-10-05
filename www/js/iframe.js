@@ -1,29 +1,63 @@
 (function($){
-	var objVar = {
-		'prop_01' : 'value_01',
-		'prop_02' : ['value_01'],
-		'prop_03' : {
-			'i-prop_01' : 'i-value_01',
-		}/*,
-		'func_01' : function(){
-			alert(this.prop_01);
-			return {'func_02': function(){
-				alert('def');
-			}};
-		}*/
-	};
-	console.time('benchmark_XCalls');
-	xwfCall(function(param1){
-		delete param1.prop_03;
-		return;
-		//console.log(window.cordova.version());
-		$.get('http://192.168.1.64/airstrip/www/index.html', null, function(rs){
-			xwfCall(function(html){
-				console.log('html: ', html);
-			}, null, rs);
-		}, 'html');
-		return 'some-value';
-	}, null, objVar);
-	console.log(objVar);
-	console.timeEnd('benchmark_XCalls');
+	
+	$btnBgallery = $('#btn-bgallery');
+	
+	$btnBgallery.on('click', function(evt){
+		//
+		//
+		console.time('benchmark_XCalls');
+		xwfCall(
+			// Function call
+			// Context changed to parent page inside this function
+			function(_fcID){
+				//
+				navigator.camera.getPicture(
+					function(){
+						console.log('camera success');
+						xwfFBak(_fcID, arguments);
+					},
+					function(){
+						console.log('camera failed');
+						xwfFBak(_fcID, arguments);
+					}
+				);
+			},
+			// Callback 
+			function(result){
+				console.timeEnd('benchmark_XCalls');
+				console.log('get camera data: ', result);
+			},
+			// Params
+			[]
+		);
+		// .end
+	});
+	
+	
+	/* media-capture */
+	// Context changed to parent page inside this function
+	/*xwfCall(function(){
+		// capture callback
+		var captureSuccess = function(mediaFiles) {
+		    var i, path, len;
+		    for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+		        path = mediaFiles[i].fullPath;
+		        // do something interesting with the file
+		    }
+		};
+		
+		// capture error callback
+		var captureError = function(error) {
+		    navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+		};
+		
+		document.addEventListener("deviceready", function() {
+		    if (navigator.device.capture) {
+				// start audio capture
+				navigator.device.capture.captureAudio(captureSuccess, captureError, {limit:1});		    	
+		    }
+		}, false);
+	});*/
+	// .end
+	
 })(jQuery);
