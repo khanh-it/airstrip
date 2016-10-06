@@ -7,8 +7,17 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         },
         "cordova-plugin-crosswalk-webview": {
             "XWALK_VERSION": "21+",
@@ -16,69 +25,60 @@
             "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
             "XWALK_MODE": "embedded",
             "XWALK_MULTIPLEAPK": "true",
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
-        },
-        "cordova-plugin-battery-status": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
-        },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
-        },
-        "cordova-plugin-contacts": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         },
         "cordova-plugin-device-motion": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         },
         "cordova-plugin-device-orientation": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         },
         "cordova-plugin-dialogs": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         },
         "cordova-plugin-file": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         },
         "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         },
         "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         },
         "cordova-plugin-globalization": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         },
         "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         },
         "cordova-plugin-media": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         },
         "cordova-plugin-media-capture": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         },
         "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
-        },
-        "cordova-plugin-vibration": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         },
         "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "airstrip.mobile.khanhdtp.vn"
+            "PACKAGE_NAME": "airtrip.mobile.khanhdtp.vn"
         }
     }
 }

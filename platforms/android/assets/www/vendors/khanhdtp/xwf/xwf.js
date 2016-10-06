@@ -57,7 +57,7 @@
 			;
 			// Has callback?
            	if (callback) {
-           		callback((new Function('return ' + data + ';'))());
+           		callback((new Function('return ' + data))());
            	};
 		}
 	};

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="airstrip.mobile.khanhdtp.vn" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>AirStrip</name>
+<widget id="airtrip.mobile.evolableasia.vn" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>AirTrip</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+    	Online air booking.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="khanhdtp@evolableasia.vn" href="http://evolable.asia">
+        EA Mobile Team.
     </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
@@ -16,11 +16,48 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <!-- preference(s) -->
+	<preference name="DisallowOverscroll" value="true"/>
+	<preference name="Orientation" value="portrait"/>
+	<!-- .end preference(s) -->
     <platform name="android">
         <allow-intent href="market:*" />
+        <!-- icons:
+            ldpi    : 36x36 px
+            mdpi    : 48x48 px
+            hdpi    : 72x72 px
+            xhdpi   : 96x96 px
+            xxhdpi  : 144x144 px
+            xxxhdpi : 192x192 px
+        -->
+        <icon src="res/android/icon/ldpi.png" density="ldpi" />
+        <icon src="res/android/icon/mdpi.png" density="mdpi" />
+        <icon src="res/android/icon/hdpi.png" density="hdpi" />
+        <icon src="res/android/icon/xhdpi.png" density="xhdpi" />
+        <icon src="res/android/icon/xxhdpi.png" density="xxhdpi" />
+        <icon src="res/android/icon/xxxhdpi.png" density="xxxhdpi" />
+        <!-- .end icons -->
+        
+        <!-- splashscreen -->
+	    <!-- you can use any density that exists in the Android project -->
+	    <splash src="res/android/screen/splash-ldpi.png" density="ldpi"/>
+	    <splash src="res/android/screen/splash-mdpi.png" density="mdpi"/>
+	    <splash src="res/android/screen/splash-hdpi.png" density="hdpi"/>
+	    <splash src="res/android/screen/splash-xhdpi.png" density="xhdpi"/>
+	    <splash src="res/android/screen/splash-xxhdpi.png" density="xxhdpi"/>
+	    <splash src="res/android/screen/splash-xxxhdpi.png" density="xxxhdpi"/>
+	    <!-- . end splashscreen -->
+	    
+	    <!-- preference(s) -->
+	    <preference name="ErrorUrl" value="app-error.html"/>
+	    <!-- . end preference(s) -->
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        
+        <!-- preference(s) -->
+	    <preference name="ErrorUrl" value="Application Error..!"/>
+	    <!-- . end preference(s) -->
     </platform>
 </widget>

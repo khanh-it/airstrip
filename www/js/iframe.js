@@ -60,4 +60,11 @@
 	});*/
 	// .end
 	
+	/* indexedDB */
+	var employeeID = 0;
+	var employeeData = [
+	   { id: ++employeeID + (new Date()), name: "Gopal K Varma", age: 35, email: "contact@tutorialspoint.com" },
+	   { id: ++employeeID + (new Date()), name: "Prasad", age: 24, email: "prasad@tutorialspoint.com" }
+	];
+	
 })(jQuery);
