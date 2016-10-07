@@ -3,37 +3,6 @@
  * 
  */
 (function(_win){
-	return;
-	//
-	//
-	_win.postMessageCB = _win.postMessageCB || function postMessageCB(message, origin, callback) {
-		// Has callback?
-		if ('function' == (typeof callback)) {
-			// +++ 
-			
-			// +++
-			//var timer = function 
-			// +++ Event handler
-			var onMessageCallback = function(evt) {
-				// 
-				
-				
-				// Self destruct
-				(_win.removeEventListener || _win.detachEvent)('message', onMessageCallback, false);
-			};
-			// +++ 
-			(_win.addEventListener || _win.attachEvent)('message', onMessageCallback, false);	
-		}
-		// 
-		return _win.postMessage(message, origin);
-	};
-})(window);
-
-/**
- *
- * 
- */
-(function(_win){
     // full-screen available?
     _win.document.fullscreenEnabled = (
         document.fullscreenEnabled || 
@@ -65,29 +34,16 @@
 	   document.msFullscreenElement
     );
     // console.log(document.requestFullscreen);
-    
-    /**
-     * Exe func
-     */
-    Function.exe = Function.exe || function exeFunc(func) {
-        if ("function" == (typeof func)) {
-            // Generate function name.
-            var funcName = '_' + (1 * new Date());
-            // Define temp function
-            try {
-                // Define function
-                eval('exeFunc.' + funcName + ' = ' + func.toString() + ';');
-                // Execute function
-                exeFunc[funcName](_win);
-            } catch (e) {
-                console.log(e);
-            }
-            // Delete temp function
-            delete exeFunc[funcName];
-        }
-    };
-    
-    
-    
-    
 })(window);
+
+function notifyMe() {
+	var n1 = new Notification('Tiêu đề', {
+		//'badge': '',
+		'lang': 'vi',
+		'body': '<p><span>Nội dung</span></p>',
+		//'tag': '',
+		'icon': '/m-AirTrip/www/img/logo.png',
+		//'data': '',
+		//'vibrate': true
+	});
+};

@@ -1,70 +1,57 @@
-(function($){
+/**
+ * Notication
+ */
+(function($) {
+	// Let's check if the browser supports notifications
+	if (!("Notification" in window)) {
+		alert("This browser does not support desktop notification");
+		return;
+	}
 	
-	$btnBgallery = $('#btn-bgallery');
-	
-	$btnBgallery.on('click', function(evt){
+	/**
+	 * 
+	 */
+	function notifyMe(title, body, data) {
+		return new Notification(title, {
+			'body': body,
+			'icon': '/m-AirTrip/www/img/logo.png',
+			'data': data
+		});
+	};
+	//
+	$('#notifyMe').on('click', function() {
+		
+		var $this = $(this),
+			title = $this.data('title'),
+			body = $this.data('body'),
+			data = {'time': 1 * (new Date())},
+			nt = null
+		;
+			
+		// Let's check whether notification permissions have already been granted
+		if (Notification.permission === "granted") {
+			// If it's okay let's create a notification
+			nt = notifyMe(title, body, data);
+		}
+
+		// Otherwise, we need to ask the user for permission
+		else if (Notification.permission !== 'denied') {
+			Notification.requestPermission(function(permission) {
+				// If the user accepts, let's create a notification
+				if (permission === "granted") {
+					nt = notifyMe(title, body, data);
+				}
+			});
+		}
+		
 		//
-		//
-		console.time('benchmark_XCalls');
-		xwfCall(
-			// Function call
-			// Context changed to parent page inside this function
-			function(_fcID){
-				//
-				navigator.camera.getPicture(
-					function(){
-						console.log('camera success');
-						xwfFBak(_fcID, arguments);
-					},
-					function(){
-						console.log('camera failed');
-						xwfFBak(_fcID, arguments);
-					}
-				);
-			},
-			// Callback 
-			function(result){
-				console.timeEnd('benchmark_XCalls');
-				console.log('get camera data: ', result);
-			},
-			// Params
-			[]
-		);
-		// .end
+		if (nt) {
+			nt.onclick = function(evt){
+				console.log(evt, this);
+			};
+		}
+
+		// At last, if the user has denied notifications, and you
+		// want to be respectful there is no need to bother them any more.
 	});
-	
-	
-	/* media-capture */
-	// Context changed to parent page inside this function
-	/*xwfCall(function(){
-		// capture callback
-		var captureSuccess = function(mediaFiles) {
-		    var i, path, len;
-		    for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-		        path = mediaFiles[i].fullPath;
-		        // do something interesting with the file
-		    }
-		};
-		
-		// capture error callback
-		var captureError = function(error) {
-		    navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
-		};
-		
-		document.addEventListener("deviceready", function() {
-		    if (navigator.device.capture) {
-				// start audio capture
-				navigator.device.capture.captureAudio(captureSuccess, captureError, {limit:1});		    	
-		    }
-		}, false);
-	});*/
-	// .end
-	
-	/* indexedDB */
-	var employeeID = 0;
-	var employeeData = [
-	   { id: ++employeeID + (new Date()), name: "Gopal K Varma", age: 35, email: "contact@tutorialspoint.com" },
-	   { id: ++employeeID + (new Date()), name: "Prasad", age: 24, email: "prasad@tutorialspoint.com" }
-	];
-	
 })(jQuery);

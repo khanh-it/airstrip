@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap://* https://ssl.gstatic.com 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="../css/iframe.css">
+        <title>Hello World # Iframe</title>
+    </head>
+    <body>
+    	<h2><a href="cordova-plugins.html">&gt;&gt;&gt;cordova-plugins&lt;&lt;&lt;</a></h2>
+    	<hr/>
+    	
+    	<h1>HTML5 API(s)</h1>
+    		<button id="notifyMe" data-title="Tiêu đề" data-body="Nội dung">Notify me!</button>
+    	<hr/>
+    	
+        <!-- cross windows function call library -->
+        <script>
+        	var XWF_ORIGIN_FBAK = 'null,file://';
+        </script>
+        <script type="text/javascript" src="../vendors/khanhdtp/xwf/xwf.js"></script>
+        <!-- .end : cross windows function call library -->
+        <script src="../vendors/jquery/jquery-1.12.4.min.js"></script>
+        <script type="text/javascript" src="../js/iframe.js"></script>
+    </body>
+</html>

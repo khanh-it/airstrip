@@ -57,7 +57,7 @@
 			;
 			// Has callback?
            	if (callback) {
-           		callback((new Function('return ' + data))());
+           		callback.apply(null, (new Function('return ' + data))());
            	};
 		}
 	};
@@ -66,92 +66,47 @@
 	(_win.addEventListener || _win.attachEvent)('message', onMessageEvtHandler, false);
 	
 	/**
-	 * Encode data
-	 * @param $data {mixed} Data to encode
-	 * @return {String}
+	 * Singleton class: cross windows function call...
 	 */
-	var serialize = function(data) {
-		return JSON.stringify(data);
-	};
-	/**
-	 * Convert function to string, and padding params
-	 * @return {String}
-	 */
-	var func2StrPadding = function(func, params) {
-		if ('function' == (typeof func)) {
+	_win.xwf = _win.xwf || {
+		/**
+		 * Helper: generate unique function call id
+		 * @return {String} id
+		 */
+		genUID: function() {
+			var fcID = '_' + (new Date()).getTime();// + Math.random();
+			// Return
+			return fcID;
+		},
+		/**
+		 * Helper: encode data
+		 * @param $data {mixed} Data to encode
+		 * @return {String}
+		 */
+		serialize: function(data) {
+			return JSON.stringify(data);
+		},
+		/**
+		 * Helper: convert function to string, and padding params
+		 * @return {String}
+		 */
+		func2StrPadding: function(func, params) {
 			// Convert function to string
 			func = '' + func;
 			// Padding params
 			params = (params instanceof Array) ? params : [];
 			for (var i = 0; i < params.length; i++) {
-				params[i] = serialize(params[i]);
+				params[i] = this.serialize(params[i]);
 			}
 			func = '(' + func + ')(' + params.join(', ') + ');';
 			// Return
 			return func;
-		}
-	};
-	
-	/**
-	 * Generate unique Function call id
-	 * @return {String} id
-	 */
-	var genUID = function() {
-		var fcID = '_' + (new Date()).getTime();// + Math.random();
-		// Return
-		return fcID;
-	};
-	
-	/**
-	 * Register callback
-	 * @param fcID {String} Function call id
-	 * @param callback {Function} A callback function 
-	 * @return void
-	 */
-	/*var registerCallback = function(fcID, callback) {
-		// Register callback
-		if ('function' == (typeof callback)) {
-			PMData.callbacks[fcID] = callback;
-		}
-	};*/
-	
-	/**
-	 * Clear postMessage PMData
-	 * @param fcID {String} Function call id
-	 * @return void
-	 */
-	var rmPMDataItem = function(fcID) {
-		delete PMData.sources[fcID];
-		delete PMData.callbacks[fcID];
-	};
-	
-	/**
-	 * Fire cross function callbacks
-	 * @param fcID {String} Function call id
-	 * @param data {mixed} Data 
-	 * @return void
-	 */
-	_win.xwfFBak = _win.xwfFBak || function(fcID, data){
-		var evtSrc = PMData.sources[fcID],
-			callback = PMData.callbacks[fcID]
-		;
-		// Case: same window calls
-		if (!evtSrc && callback) {
-			callback(data);
-		// Case: cross window calls
-		} else if (evtSrc) {
-			evtSrc.postMessage(fcID + MSG_KEY_FBAK + serialize(data), '*');
-		}
-		// Remove data item...
-		rmPMDataItem(fcID);
-	};
-	
-	/**
-	 * Cross windows function call
-	 * @return void
-	 */
-	_win.xwfCall = _win.xwfCall || function(func, callback, params){
-		if ('function' == typeof(func)) {
+		},
+		/**
+		 * Register cross windows function call
+		 * @return this
+		 */
+		call: function(func, callback, params){
 			// Format params
 			if (callback instanceof Array && !params) {
 				params = callback;
@@ -159,19 +114,12 @@
 			params = (params || []);
 			
 			// Gen function call id.
-			var fcID = genUID();
+			var fcID = this.genUID();
 			params.push(fcID);
 			
 			// Register callbacks?
 			if ('function' == typeof(callback)) {
-				PMData.callbacks[fcID] = function(){
-					// Remove data item...
-					rmPMDataItem(fcID);
-					// Fire callback
-					/* Convert `arguments` to array*/ 
-					arguments = Array.prototype.slice.call(arguments);
-					return callback.apply(null, arguments);
-				};
+				PMData.callbacks[fcID] = callback;
 			}
 			
 			// Case: same window calls
@@ -180,12 +128,46 @@
 			// Case: cross window calls
 			} else {
 				// Convert function to string  
-				func = func2StrPadding(func, params);
+				func = this.func2StrPadding(func, params);
 				if (func) {
 					// Forward function call 
 					_pWin.postMessage(fcID + MSG_KEY_CALL + func, '*');
 				}
 			}
+			// Return
+			return this;
+		},
+		/**
+		 * Fire cross function callbacks
+		 * @return void
+		 */
+		fbak: function(){
+			/* Convert `arguments` to array*/ 
+			arguments = Array.prototype.slice.call(arguments);
+			var fcID = arguments[0],
+				evtSrc = PMData.sources[fcID],
+				callback = PMData.callbacks[fcID]
+			;
+			// Case: same window calls
+			if (!evtSrc && callback) {
+				callback.apply(null, arguments);
+			// Case: cross window calls
+			} else if (evtSrc) {
+				evtSrc.postMessage(fcID + MSG_KEY_FBAK + this.serialize(arguments), '*');
+			}
+			// Return
+			return this;
+		},
+		/**
+		 * Unregister cross function call callbacks, +sources (windows0)
+		 * @param fcID {String} Function call id
+		 * @return this
+		 */
+		uncall: function(fcID) {
+			delete PMData.sources[fcID];
+			delete PMData.callbacks[fcID];
+			// Return
+			return this;
 		}
 	};
 })(window, window.opener || window.parent);

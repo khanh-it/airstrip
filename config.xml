@@ -30,22 +30,22 @@
             xxhdpi  : 144x144 px
             xxxhdpi : 192x192 px
         -->
-        <icon src="res/android/icon/ldpi.png" density="ldpi" />
-        <icon src="res/android/icon/mdpi.png" density="mdpi" />
-        <icon src="res/android/icon/hdpi.png" density="hdpi" />
-        <icon src="res/android/icon/xhdpi.png" density="xhdpi" />
-        <icon src="res/android/icon/xxhdpi.png" density="xxhdpi" />
-        <icon src="res/android/icon/xxxhdpi.png" density="xxxhdpi" />
+        <icon src="res/android/icon/_all.png" density="ldpi" />
+        <icon src="res/android/icon/_all.png" density="mdpi" />
+        <icon src="res/android/icon/_all.png" density="hdpi" />
+        <icon src="res/android/icon/_all.png" density="xhdpi" />
+        <icon src="res/android/icon/_all.png" density="xxhdpi" />
+        <icon src="res/android/icon/_all.png" density="xxxhdpi" />
         <!-- .end icons -->
         
         <!-- splashscreen -->
 	    <!-- you can use any density that exists in the Android project -->
-	    <splash src="res/android/screen/splash-ldpi.png" density="ldpi"/>
-	    <splash src="res/android/screen/splash-mdpi.png" density="mdpi"/>
-	    <splash src="res/android/screen/splash-hdpi.png" density="hdpi"/>
-	    <splash src="res/android/screen/splash-xhdpi.png" density="xhdpi"/>
-	    <splash src="res/android/screen/splash-xxhdpi.png" density="xxhdpi"/>
-	    <splash src="res/android/screen/splash-xxxhdpi.png" density="xxxhdpi"/>
+	    <splash src="res/android/screen/splash-_all.png" density="ldpi"/>
+	    <splash src="res/android/screen/splash-_all.png" density="mdpi"/>
+	    <splash src="res/android/screen/splash-_all.png" density="hdpi"/>
+	    <splash src="res/android/screen/splash-_all.png" density="xhdpi"/>
+	    <splash src="res/android/screen/splash-_all.png" density="xxhdpi"/>
+	    <splash src="res/android/screen/splash-_all.png" density="xxxhdpi"/>
 	    <!-- . end splashscreen -->
 	    
 	    <!-- preference(s) -->
