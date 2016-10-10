@@ -30,7 +30,7 @@
         -->
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta charset="UTF-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap://* https://ssl.gstatic.com 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap://* https://ssl.gstatic.com 'unsafe-eval' blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
@@ -42,7 +42,35 @@
     	<hr/>
     	
     	<h1>HTML5 API(s)</h1>
+    	<div class="clearfix">
+    		<h3>Web Notification</h3>
     		<button id="notifyMe" data-title="Tiêu đề" data-body="Nội dung">Notify me!</button>
+    	</div>
+    	<hr/>
+    	
+    	<div class="clearfix">
+    		<h3>Vibration</h3>
+    		<button id="vibrateMe" data-duration="200">Vibrate me!</button>
+    	</div>
+    	<hr/>
+    		
+    	<div class="clearfix">
+    		<h3>Touch Events</h3>
+    	</div>
+    	<hr/>
+    	
+    	<div class="clearfix">
+    		<h3>Screen Orientation</h3>
+    	</div>
+    	<hr/>
+    	
+    	<div class="clearfix">
+    		<input type="file" id="fileElem" multiple accept="image/*" style="display:none" />
+			<a href="#" id="fileSelect">Select some files</a> 
+			<div id="fileList">
+				<p>No files selected!</p>
+			</div>
+    	</div>
     	<hr/>
     	
         <!-- cross windows function call library -->
